@@ -70,7 +70,7 @@ function App() {
         Add
       </button>
       {taskList.map((task, index) => (
-        <div className="list" key={task.taskName}>
+        <div className="list" key={"task" + index}>
           <textarea
             disabled={!task.edit}
             value={task.taskName}
