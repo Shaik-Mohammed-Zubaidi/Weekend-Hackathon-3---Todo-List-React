@@ -70,44 +70,38 @@ function App() {
         Add
       </button>
       <br />
-      <ul>
-        {taskList.map((task, index) => (
-          <li className="list" key={"task" + index}>
-            <textarea
-              disabled={!task.edit}
-              value={task.taskName}
-              onChange={(event) => editTaskData(event, index)}
-            ></textarea>
-            {!task.edit && (
-              <button className="edit" onClick={() => editTask(index)}>
-                Edit
-              </button>
-            )}
-            {!task.edit && (
-              <button
-                className="delete"
-                onClick={() => deleteTask(task.taskName)}
-              >
-                Delete
-              </button>
-            )}
-            {task.edit && (
-              <button className="editTask" onClick={() => editTask(index)}>
-                Edit
-              </button>
-            )}
-            {task.edit && (
-              <button
-                className="saveTask"
-                onClick={() => saveTask(index)}
-                disabled={!task.canSave}
-              >
-                Save
-              </button>
-            )}
-          </li>
-        ))}
-      </ul>
+      {taskList.map((task, index) => (
+        <div className="list" key={"task" + index}>
+          <textarea
+            className="editTask"
+            disabled={!task.edit}
+            value={task.taskName}
+            onChange={(event) => editTaskData(event, index)}
+          ></textarea>
+          {!task.edit && (
+            <button className="edit" onClick={() => editTask(index)}>
+              Edit
+            </button>
+          )}
+          {!task.edit && (
+            <button
+              className="delete"
+              onClick={() => deleteTask(task.taskName)}
+            >
+              Delete
+            </button>
+          )}
+          {task.edit && (
+            <button
+              className="saveTask"
+              onClick={() => saveTask(index)}
+              disabled={!task.canSave}
+            >
+              Save
+            </button>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
