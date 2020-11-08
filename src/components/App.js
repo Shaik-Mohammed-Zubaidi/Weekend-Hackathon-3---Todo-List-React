@@ -67,34 +67,34 @@ function App() {
         <div className="list" key={"task" + index}>
           {!task.edit && <li>{task.taskName}</li>}
           {task.edit && (
-            <input
-              className="editTask"
-              value={task.taskName}
-              onChange={(event) => editTaskData(event, index)}
-            />
+            <div>
+              <input
+                className="editTask"
+                value={task.taskName}
+                onChange={(event) => editTaskData(event, index)}
+              />
+              <button
+                className="saveTask"
+                onClick={() => saveTask(index)}
+                disabled={task.taskName === ""}
+              >
+                Save
+              </button>
+            </div>
           )}
 
           {!task.edit && (
-            <button className="edit" onClick={() => editTask(index)}>
-              Edit
-            </button>
-          )}
-          {!task.edit && (
-            <button
-              className="delete"
-              onClick={() => deleteTask(task.taskName)}
-            >
-              Delete
-            </button>
-          )}
-          {task.edit && (
-            <button
-              className="saveTask"
-              onClick={() => saveTask(index)}
-              disabled={task.taskName === ""}
-            >
-              Save
-            </button>
+            <div>
+              <button className="edit" onClick={() => editTask(index)}>
+                Edit
+              </button>
+              <button
+                className="delete"
+                onClick={() => deleteTask(task.taskName)}
+              >
+                Delete
+              </button>
+            </div>
           )}
         </div>
       ))}
