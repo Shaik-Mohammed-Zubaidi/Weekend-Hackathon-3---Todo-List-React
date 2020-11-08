@@ -63,41 +63,43 @@ function App() {
         Add
       </button>
       <br />
-      {taskList.map((task, index) => (
-        <ul className="list" key={"task" + index}>
-          {!task.edit && <li>{task.taskName}</li>}
-          {task.edit && (
-            <input
-              className="editTask"
-              value={task.taskName}
-              onChange={(event) => editTaskData(event, index)}
-            />
-          )}
-          
-          {!task.edit && (
-            <button className="edit" onClick={() => editTask(index)}>
-              Edit
-            </button>
-          )}
-          {!task.edit && (
-            <button
-              className="delete"
-              onClick={() => deleteTask(task.taskName)}
-            >
-              Delete
-            </button>
-          )}
-          {task.edit && (
-            <button
-              className="saveTask"
-              onClick={() => saveTask(index)}
-              disabled={task.taskName === ""}
-            >
-              Save
-            </button>
-          )}
-        </ul>
-      ))}
+      <ol>
+        {taskList.map((task, index) => (
+          <div className="list" key={"task" + index}>
+            {!task.edit && <li>{task.taskName}</li>}
+            {task.edit && (
+              <input
+                className="editTask"
+                value={task.taskName}
+                onChange={(event) => editTaskData(event, index)}
+              />
+            )}
+
+            {!task.edit && (
+              <button className="edit" onClick={() => editTask(index)}>
+                Edit
+              </button>
+            )}
+            {!task.edit && (
+              <button
+                className="delete"
+                onClick={() => deleteTask(task.taskName)}
+              >
+                Delete
+              </button>
+            )}
+            {task.edit && (
+              <button
+                className="saveTask"
+                onClick={() => saveTask(index)}
+                disabled={task.taskName === ""}
+              >
+                Save
+              </button>
+            )}
+          </div>
+        ))}
+      </ol>
     </div>
   );
 }
