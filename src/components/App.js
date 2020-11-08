@@ -13,8 +13,7 @@ function App() {
       edit: false
     };
 
-    let taskListCopy = taskList;
-    taskListCopy = taskListCopy.concat(taskObj);
+    let taskListCopy = [...taskList, taskObj];
     updateTaskList(taskListCopy);
     setTaskContent("");
   };
@@ -66,6 +65,7 @@ function App() {
       <br />
       {taskList.map((task, index) => (
         <ul className="list" key={"task" + index}>
+          {!task.edit && <li>{task.taskName}</li>}
           {task.edit && (
             <input
               className="editTask"
@@ -73,7 +73,7 @@ function App() {
               onChange={(event) => editTaskData(event, index)}
             />
           )}
-          {!task.edit && <li id="lili">{task.taskName}</li>}
+          
           {!task.edit && (
             <button className="edit" onClick={() => editTask(index)}>
               Edit
