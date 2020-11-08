@@ -13,6 +13,7 @@ button {
 .bg-pink {
   background-color: pink;
 }
-.editTask {
+.editTask,
+.divTask {
   display: inline;
 }
