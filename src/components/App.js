@@ -64,24 +64,27 @@ function App() {
       </button>
       <br />
       {taskList.map((task, index) => (
-        <div className="list" key={"task" + index}>
-          {!task.edit && <li>{task.taskName}</li>}
-          {task.edit && (
-            <div>
-              <input
-                className="editTask"
-                value={task.taskName}
-                onChange={(event) => editTaskData(event, index)}
-              />
-              <button
-                className="saveTask"
-                onClick={() => saveTask(index)}
-                disabled={task.taskName === ""}
-              >
-                Save
-              </button>
-            </div>
-          )}
+        <div key={"task" + index}>
+          <li className="list">
+            {!task.edit ? (
+              task.taskName
+            ) : (
+              <div>
+                <input
+                  className="editTask"
+                  value={task.taskName}
+                  onChange={(event) => editTaskData(event, index)}
+                />
+                <button
+                  className="saveTask"
+                  onClick={() => saveTask(index)}
+                  disabled={task.taskName === ""}
+                >
+                  Save
+                </button>
+              </div>
+            )}
+          </li>
 
           {!task.edit && (
             <div>
