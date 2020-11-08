@@ -67,11 +67,11 @@ function App() {
       {taskList.map((task, index) => (
         <ul className="list" key={"task" + index}>
           {task.edit && (
-            <textarea
+            <input
               className="editTask"
               value={task.taskName}
               onChange={(event) => editTaskData(event, index)}
-            ></textarea>
+            />
           )}
           {!task.edit && <li id="lili">{task.taskName}</li>}
           {!task.edit && (
