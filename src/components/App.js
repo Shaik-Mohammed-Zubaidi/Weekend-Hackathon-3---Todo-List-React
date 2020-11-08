@@ -68,7 +68,6 @@ function App() {
         <div className="list" key={"task" + index}>
           {task.edit && (
             <textarea
-              className="editTask"
               disabled={!task.edit}
               value={task.taskName}
               onChange={(event) => editTaskData(event, index)}
