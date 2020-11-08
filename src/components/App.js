@@ -69,6 +69,8 @@ function App() {
       <button id="btn" onClick={addTask}>
         Add
       </button>
+      <br />
+
       {taskList.map((task, index) => (
         <div className="list" key={"task" + index}>
           <textarea
@@ -78,16 +80,21 @@ function App() {
             onChange={(event) => editTaskData(event, index)}
           ></textarea>
           {!task.edit && (
-            <button className="editTask" onClick={() => editTask(index)}>
+            <button className="edit" onClick={() => editTask(index)}>
               Edit
             </button>
           )}
           {!task.edit && (
             <button
-              className="deleteTask"
+              className="delete"
               onClick={() => deleteTask(task.taskName)}
             >
               Delete
+            </button>
+          )}
+          {task.edit && (
+            <button className="editTask" onClick={() => editTask(index)}>
+              Edit
             </button>
           )}
           {task.edit && (
