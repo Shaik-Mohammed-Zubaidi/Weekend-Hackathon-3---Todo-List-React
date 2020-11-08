@@ -73,6 +73,7 @@ function App() {
       {taskList.map((task, index) => (
         <div className="list" key={"task" + index}>
           <textarea
+            key={"task" + index}
             className="editTask"
             disabled={!task.edit}
             value={task.taskName}
