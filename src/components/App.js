@@ -60,7 +60,7 @@ function App() {
         onChange={(event) => setTaskContent(event.target.value)}
         value={taskContent}
       ></textarea>
-      <button id="btn" onClick={addTask}>
+      <button id="btn" onClick={()=>addTask()}>
         Add
       </button>
       <br />
@@ -68,7 +68,6 @@ function App() {
         <div className="list" key={"task" + index}>
           {task.edit && (
             <textarea
-              disabled={!task.edit}
               value={task.taskName}
               onChange={(event) => editTaskData(event, index)}
             ></textarea>
