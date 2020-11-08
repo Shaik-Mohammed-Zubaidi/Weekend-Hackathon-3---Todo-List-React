@@ -72,6 +72,7 @@ function App() {
       {taskList.map((task, index) => (
         <div className="list" key={"task" + index}>
           <textarea
+            className="list"
             disabled={!task.edit}
             value={task.taskName}
             onChange={(event) => editTaskData(event, index)}
