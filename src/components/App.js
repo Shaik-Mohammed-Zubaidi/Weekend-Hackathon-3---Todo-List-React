@@ -10,8 +10,7 @@ function App() {
     }
     let taskObj = {
       taskName: taskContent,
-      edit: false,
-      canSave: true
+      edit: false
     };
 
     let taskListCopy = taskList;
@@ -49,11 +48,6 @@ function App() {
     taskListCopy = taskListCopy.map((task, index2) => {
       if (index2 === index) {
         task.taskName = event.target.value;
-        if (event.target.value === "") {
-          task.canSave = false;
-        } else {
-          task.canSave = true;
-        }
       }
       return task;
     });
@@ -73,7 +67,6 @@ function App() {
       {taskList.map((task, index) => (
         <div className="list" key={"task" + index}>
           <textarea
-            key={"task" + index}
             className="editTask"
             disabled={!task.edit}
             value={task.taskName}
@@ -96,7 +89,7 @@ function App() {
             <button
               className="saveTask"
               onClick={() => saveTask(index)}
-              disabled={!task.canSave}
+              disabled={task.taskName === ""}
             >
               Save
             </button>
